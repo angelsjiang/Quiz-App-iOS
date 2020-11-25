@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GLH-SV-rUo">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--MCQ-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MCQController" customModule="Quiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="t5U-Te-cLK"/>
+                        <viewControllerLayoutGuide type="bottom" id="IGu-fP-CSi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Questions..." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kpx-dB-KZL">
+                                <rect key="frame" x="57" y="124" width="300" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="C3t-8E-0yq"/>
+                                    <constraint firstAttribute="width" constant="300" id="P05-kT-1vu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" systemColor="systemOrangeColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="opL-Yk-lFY">
+                                <rect key="frame" x="126" y="630" width="162" height="42"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <state key="normal" title="Next Question">
+                                    <color key="titleColor" red="0.66087923129459192" green="0.83542424889437283" blue="1" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="showNextQuestion:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0RB-fO-e4t"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kag-fF-xH1">
+                                <rect key="frame" x="47" y="354" width="320" height="216"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" systemColor="systemYellowColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kag-fF-xH1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="U5x-cQ-q9F"/>
+                            <constraint firstItem="opL-Yk-lFY" firstAttribute="centerX" secondItem="kag-fF-xH1" secondAttribute="centerX" id="ZHE-Di-1GS"/>
+                            <constraint firstItem="Kpx-dB-KZL" firstAttribute="top" secondItem="t5U-Te-cLK" secondAttribute="bottom" constant="80" id="eDb-on-ITJ"/>
+                            <constraint firstItem="Kpx-dB-KZL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sXU-ia-j7X"/>
+                            <constraint firstItem="kag-fF-xH1" firstAttribute="top" secondItem="Kpx-dB-KZL" secondAttribute="bottom" constant="30" id="v8P-Er-iLt"/>
+                            <constraint firstItem="opL-Yk-lFY" firstAttribute="top" secondItem="kag-fF-xH1" secondAttribute="bottom" constant="60" id="x9d-dp-NwB"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="MCQ" image="pencil.and.outline" catalog="system" id="5VM-sE-dS7"/>
+                    <connections>
+                        <outlet property="answers" destination="kag-fF-xH1" id="pGj-3e-d7M"/>
+                        <outlet property="nextBtn" destination="opL-Yk-lFY" id="YZN-jV-tqT"/>
+                        <outlet property="questionLabel" destination="Kpx-dB-KZL" id="K27-58-e9u"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-75" y="82"/>
+        </scene>
+        <!--Fill-in-Blank-->
+        <scene sceneID="Dws-Mf-tLQ">
+            <objects>
+                <viewController id="DMe-Kp-TSS" customClass="FLBController" customModule="Quiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Usu-6f-GWy"/>
+                        <viewControllerLayoutGuide type="bottom" id="p3d-In-zq6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="shU-Mz-hWt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Questions..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLY-jc-I6L">
+                                <rect key="frame" x="57" y="124" width="300" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="jaj-w6-KKH"/>
+                                    <constraint firstAttribute="width" constant="300" id="yLL-9v-sTZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" red="1" green="0.58952790700000002" blue="0.62898094950000005" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTv-Th-uMK">
+                                <rect key="frame" x="126" y="601.5" width="162" height="42"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <state key="normal" title="Next Question">
+                                    <color key="titleColor" red="0.66087923130000004" green="0.8354242489" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="showNextQuest:" destination="DMe-Kp-TSS" eventType="touchUpInside" id="Eyg-s9-RSa"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Value" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3U4-9B-COd">
+                                <rect key="frame" x="82" y="424" width="250" height="57.5"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="sUu-Nb-2Kc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" systemColor="systemIndigoColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="3U4-9B-COd" firstAttribute="top" secondItem="VLY-jc-I6L" secondAttribute="bottom" constant="100" id="VRz-wC-hHv"/>
+                            <constraint firstItem="3U4-9B-COd" firstAttribute="centerX" secondItem="shU-Mz-hWt" secondAttribute="centerX" id="VYl-At-eeg"/>
+                            <constraint firstItem="jTv-Th-uMK" firstAttribute="centerX" secondItem="VLY-jc-I6L" secondAttribute="centerX" id="WEe-aG-DFd"/>
+                            <constraint firstItem="jTv-Th-uMK" firstAttribute="top" secondItem="3U4-9B-COd" secondAttribute="bottom" constant="120" id="Xef-Wu-K81"/>
+                            <constraint firstItem="VLY-jc-I6L" firstAttribute="centerX" secondItem="shU-Mz-hWt" secondAttribute="centerX" id="cat-JC-hlr"/>
+                            <constraint firstItem="VLY-jc-I6L" firstAttribute="top" secondItem="Usu-6f-GWy" secondAttribute="bottom" constant="80" id="ihd-12-TeR"/>
+                            <constraint firstItem="3U4-9B-COd" firstAttribute="centerX" secondItem="VLY-jc-I6L" secondAttribute="centerX" id="uKz-o0-Z4A"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="w8z-6K-OYA" appends="YES" id="v2x-ZE-dB8"/>
+                        </connections>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Fill-in-Blank" image="square.and.pencil" catalog="system" id="jZh-jr-AKP"/>
+                    <connections>
+                        <outlet property="FLBNextBtn" destination="jTv-Th-uMK" id="7Ef-dI-Ytx"/>
+                        <outlet property="FLBQuestionLabel" destination="VLY-jc-I6L" id="uhI-ob-Qnp"/>
+                        <outlet property="usrData" destination="3U4-9B-COd" id="9nE-7f-szI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4JE-mV-rs3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="w8z-6K-OYA">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="DMe-Kp-TSS" id="5Ha-lT-LDZ"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1491" y="94"/>
+        </scene>
+        <!--Score-->
+        <scene sceneID="nmp-sf-mQg">
+            <objects>
+                <viewController id="JDu-D0-fJj" customClass="scoreViewController" customModule="Quiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9dg-ZI-wQL"/>
+                        <viewControllerLayoutGuide type="bottom" id="HJC-mg-Ile"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BYW-Qc-TbZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlQ-py-1kC">
+                                <rect key="frame" x="80.5" y="310" width="253" height="60"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Score is" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBG-rv-fBF">
+                                <rect key="frame" x="119" y="194" width="176" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                <color key="textColor" systemColor="systemIndigoColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="oBG-rv-fBF" firstAttribute="centerX" secondItem="BYW-Qc-TbZ" secondAttribute="centerX" id="1ds-VP-I4Z"/>
+                            <constraint firstItem="qlQ-py-1kC" firstAttribute="top" secondItem="oBG-rv-fBF" secondAttribute="bottom" constant="80" id="6bw-wn-odL"/>
+                            <constraint firstItem="qlQ-py-1kC" firstAttribute="centerX" secondItem="oBG-rv-fBF" secondAttribute="centerX" id="DeC-1U-kON"/>
+                            <constraint firstItem="oBG-rv-fBF" firstAttribute="top" secondItem="9dg-ZI-wQL" secondAttribute="bottom" constant="150" id="EUM-dr-tR5"/>
+                            <constraint firstItem="qlQ-py-1kC" firstAttribute="top" secondItem="9dg-ZI-wQL" secondAttribute="bottom" constant="266" id="M3J-ti-Krc"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Score" image="checkerboard.rectangle" catalog="system" id="4sE-PB-IOj"/>
+                    <connections>
+                        <outlet property="score" destination="qlQ-py-1kC" id="8Eu-EY-YlJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WYG-vK-bSf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="722" y="170"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="5Vr-Xo-eN2">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="GLH-SV-rUo" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ANe-vi-V4v">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="GnP-sl-YAR"/>
+                        <segue destination="DMe-Kp-TSS" kind="relationship" relationship="viewControllers" id="Gxl-c8-aff"/>
+                        <segue destination="JDu-D0-fJj" kind="relationship" relationship="viewControllers" id="WYS-qy-Ota"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HUX-HS-5Ds" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="722" y="-640"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="checkerboard.rectangle" catalog="system" width="128" height="93"/>
+        <image name="pencil.and.outline" catalog="system" width="128" height="128"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="115"/>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
