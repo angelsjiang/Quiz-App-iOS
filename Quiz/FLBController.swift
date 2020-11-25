@@ -12,6 +12,7 @@ class FLBController: UIViewController {
     // FLB
     @IBOutlet var FLBQuestionLabel: UILabel!
     @IBOutlet var FLBNextBtn: UIButton!
+    @IBOutlet var FLBSubmitBtn: UIButton!
     @IBOutlet var usrData: UITextField!
     
     // need a score board to sync
@@ -37,13 +38,10 @@ class FLBController: UIViewController {
         NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20),
         NSAttributedString.Key.foregroundColor : UIColor.red])
     let wrongAlert = UIAlertController(title: "", message: "", preferredStyle: .alert)
-
-    // to dismiss alert
-    @objc func alertBackgroundTapped () {
-        self.dismiss(animated: true, completion: nil)
-    }
     
-    @IBAction func showNextQuest(_ sender: UIButton) {
+    
+    @IBAction func checkForEmpty(_ sender: UIButton) {
+        
         if usrData.text == answers[currentQuestionIndex] {
             FLBScore += 1
             print("score is: " , FLBScore)
@@ -65,16 +63,55 @@ class FLBController: UIViewController {
 
         }
         
+        if currentQuestionIndex >= (FLBQuestions.count - 1) {
+            print("in checkForEmpty if: ", currentQuestionIndex)
+
+            FLBNextBtn.isEnabled = false
+            FLBNextBtn.alpha = 0.3
+            
+            FLBSubmitBtn.isEnabled = false
+            FLBSubmitBtn.alpha = 0.3
+        }
+        else {
+            print("in checkForEmpty else: ", currentQuestionIndex)
+            FLBNextBtn.isEnabled = true
+            FLBNextBtn.alpha = 1
+
+            FLBSubmitBtn.isEnabled = false
+            FLBSubmitBtn.alpha = 0.3
+        }
+        
+    }
+
+    
+
+    // to dismiss alert
+    @objc func alertBackgroundTapped () {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func showNextQuest(_ sender: UIButton) {
+
         currentQuestionIndex += 1
 
         if currentQuestionIndex < FLBQuestions.count {
             // need to find a way to prevent index going out of bound
             FLBQuestionLabel.text = FLBQuestions[currentQuestionIndex]
             usrData.text = ""
+            
+            FLBNextBtn.isEnabled = false
+            FLBNextBtn.alpha = 0.3
+            FLBSubmitBtn.isEnabled = true
+            FLBSubmitBtn.alpha = 1
+
         }
         else {
             FLBNextBtn.isEnabled = false
             FLBNextBtn.alpha = 0.3
+
+            FLBSubmitBtn.isEnabled = false
+            FLBSubmitBtn.alpha = 0.3
         }
     }
     
@@ -87,5 +124,8 @@ class FLBController: UIViewController {
         super.viewDidLoad()
         
         FLBQuestionLabel.text = FLBQuestions[0]
+        
+        FLBNextBtn.isEnabled = false
+        FLBNextBtn.alpha = 0.3
     }
 }

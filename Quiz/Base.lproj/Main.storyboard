@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Questions..." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kpx-dB-KZL">
-                                <rect key="frame" x="57" y="124" width="300" height="200"/>
+                                <rect key="frame" x="57" y="84" width="300" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="C3t-8E-0yq"/>
                                     <constraint firstAttribute="width" constant="300" id="P05-kT-1vu"/>
@@ -30,7 +30,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="opL-Yk-lFY">
-                                <rect key="frame" x="126" y="630" width="162" height="42"/>
+                                <rect key="frame" x="126" y="570" width="162" height="42"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                 <state key="normal" title="Next Question">
                                     <color key="titleColor" red="0.66087923129459192" green="0.83542424889437283" blue="1" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
@@ -40,7 +40,7 @@
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kag-fF-xH1">
-                                <rect key="frame" x="47" y="354" width="320" height="216"/>
+                                <rect key="frame" x="47" y="304" width="320" height="216"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" systemColor="systemYellowColor"/>
                                 <userDefinedRuntimeAttributes>
@@ -49,15 +49,28 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWW-G1-WXE">
+                                <rect key="frame" x="120.5" y="617" width="173" height="42"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <state key="normal" title="Submit Answer">
+                                    <color key="titleColor" red="1" green="0.58952790700000002" blue="0.62898094950000005" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="checkForEmpty:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pdb-5o-rsF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="AWW-G1-WXE" firstAttribute="top" secondItem="opL-Yk-lFY" secondAttribute="bottom" constant="5" id="1zp-zL-TDt"/>
                             <constraint firstItem="kag-fF-xH1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="U5x-cQ-q9F"/>
                             <constraint firstItem="opL-Yk-lFY" firstAttribute="centerX" secondItem="kag-fF-xH1" secondAttribute="centerX" id="ZHE-Di-1GS"/>
-                            <constraint firstItem="Kpx-dB-KZL" firstAttribute="top" secondItem="t5U-Te-cLK" secondAttribute="bottom" constant="80" id="eDb-on-ITJ"/>
+                            <constraint firstItem="Kpx-dB-KZL" firstAttribute="top" secondItem="t5U-Te-cLK" secondAttribute="bottom" constant="40" id="eDb-on-ITJ"/>
+                            <constraint firstItem="AWW-G1-WXE" firstAttribute="centerX" secondItem="opL-Yk-lFY" secondAttribute="centerX" id="iwB-2j-Qfh"/>
+                            <constraint firstItem="AWW-G1-WXE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jlt-Q2-jD6"/>
                             <constraint firstItem="Kpx-dB-KZL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sXU-ia-j7X"/>
-                            <constraint firstItem="kag-fF-xH1" firstAttribute="top" secondItem="Kpx-dB-KZL" secondAttribute="bottom" constant="30" id="v8P-Er-iLt"/>
-                            <constraint firstItem="opL-Yk-lFY" firstAttribute="top" secondItem="kag-fF-xH1" secondAttribute="bottom" constant="60" id="x9d-dp-NwB"/>
+                            <constraint firstItem="kag-fF-xH1" firstAttribute="top" secondItem="Kpx-dB-KZL" secondAttribute="bottom" constant="20" id="v8P-Er-iLt"/>
+                            <constraint firstItem="opL-Yk-lFY" firstAttribute="top" secondItem="kag-fF-xH1" secondAttribute="bottom" constant="50" id="x9d-dp-NwB"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="MCQ" image="pencil.and.outline" catalog="system" id="5VM-sE-dS7"/>
@@ -65,6 +78,7 @@
                         <outlet property="answers" destination="kag-fF-xH1" id="pGj-3e-d7M"/>
                         <outlet property="nextBtn" destination="opL-Yk-lFY" id="YZN-jV-tqT"/>
                         <outlet property="questionLabel" destination="Kpx-dB-KZL" id="K27-58-e9u"/>
+                        <outlet property="submitBtn" destination="AWW-G1-WXE" id="rjg-P9-blP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -84,17 +98,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Questions..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLY-jc-I6L">
-                                <rect key="frame" x="57" y="124" width="300" height="200"/>
+                                <rect key="frame" x="57" y="84" width="300" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="jaj-w6-KKH"/>
                                     <constraint firstAttribute="width" constant="300" id="yLL-9v-sTZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                <color key="textColor" red="1" green="0.58952790700000002" blue="0.62898094950000005" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" systemColor="systemYellowColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTv-Th-uMK">
-                                <rect key="frame" x="126" y="601.5" width="162" height="42"/>
+                                <rect key="frame" x="126" y="521.5" width="162" height="42"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                 <state key="normal" title="Next Question">
                                     <color key="titleColor" red="0.66087923130000004" green="0.8354242489" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
@@ -104,7 +118,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Value" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3U4-9B-COd">
-                                <rect key="frame" x="82" y="424" width="250" height="57.5"/>
+                                <rect key="frame" x="82" y="384" width="250" height="57.5"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="sUu-Nb-2Kc"/>
@@ -117,16 +131,30 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XbN-WZ-bIc">
+                                <rect key="frame" x="120.5" y="568.5" width="173" height="42"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <state key="normal" title="Submit Answer">
+                                    <color key="titleColor" red="1" green="0.58952790700000002" blue="0.62898094950000005" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="checkForEmpty:" destination="DMe-Kp-TSS" eventType="touchUpInside" id="jjT-1D-31p"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="XbN-WZ-bIc" firstAttribute="centerX" secondItem="shU-Mz-hWt" secondAttribute="centerX" id="FYe-Ge-q9e"/>
+                            <constraint firstItem="XbN-WZ-bIc" firstAttribute="centerX" secondItem="shU-Mz-hWt" secondAttribute="centerX" id="NmS-Nr-K1n"/>
                             <constraint firstItem="3U4-9B-COd" firstAttribute="top" secondItem="VLY-jc-I6L" secondAttribute="bottom" constant="100" id="VRz-wC-hHv"/>
                             <constraint firstItem="3U4-9B-COd" firstAttribute="centerX" secondItem="shU-Mz-hWt" secondAttribute="centerX" id="VYl-At-eeg"/>
                             <constraint firstItem="jTv-Th-uMK" firstAttribute="centerX" secondItem="VLY-jc-I6L" secondAttribute="centerX" id="WEe-aG-DFd"/>
-                            <constraint firstItem="jTv-Th-uMK" firstAttribute="top" secondItem="3U4-9B-COd" secondAttribute="bottom" constant="120" id="Xef-Wu-K81"/>
+                            <constraint firstItem="jTv-Th-uMK" firstAttribute="top" secondItem="3U4-9B-COd" secondAttribute="bottom" constant="80" id="Xef-Wu-K81"/>
+                            <constraint firstItem="jTv-Th-uMK" firstAttribute="centerX" secondItem="shU-Mz-hWt" secondAttribute="centerX" id="bFo-mW-p7S"/>
                             <constraint firstItem="VLY-jc-I6L" firstAttribute="centerX" secondItem="shU-Mz-hWt" secondAttribute="centerX" id="cat-JC-hlr"/>
-                            <constraint firstItem="VLY-jc-I6L" firstAttribute="top" secondItem="Usu-6f-GWy" secondAttribute="bottom" constant="80" id="ihd-12-TeR"/>
+                            <constraint firstItem="VLY-jc-I6L" firstAttribute="top" secondItem="Usu-6f-GWy" secondAttribute="bottom" constant="40" id="ihd-12-TeR"/>
+                            <constraint firstItem="XbN-WZ-bIc" firstAttribute="top" secondItem="jTv-Th-uMK" secondAttribute="bottom" constant="5" id="nvm-Ps-MBK"/>
                             <constraint firstItem="3U4-9B-COd" firstAttribute="centerX" secondItem="VLY-jc-I6L" secondAttribute="centerX" id="uKz-o0-Z4A"/>
                         </constraints>
                         <connections>
@@ -137,6 +165,7 @@
                     <connections>
                         <outlet property="FLBNextBtn" destination="jTv-Th-uMK" id="7Ef-dI-Ytx"/>
                         <outlet property="FLBQuestionLabel" destination="VLY-jc-I6L" id="uhI-ob-Qnp"/>
+                        <outlet property="FLBSubmitBtn" destination="XbN-WZ-bIc" id="XCq-61-jf1"/>
                         <outlet property="usrData" destination="3U4-9B-COd" id="9nE-7f-szI"/>
                     </connections>
                 </viewController>

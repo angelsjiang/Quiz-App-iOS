@@ -12,6 +12,7 @@ class MCQController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     // MCQ
     @IBOutlet var questionLabel: UILabel!
     @IBOutlet var nextBtn: UIButton!
+    @IBOutlet var submitBtn: UIButton!
     @IBOutlet weak var answers: UIPickerView!
     
 
@@ -40,17 +41,9 @@ class MCQController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20),
         NSAttributedString.Key.foregroundColor : UIColor.red])
     let wrongAlert = UIAlertController(title: "", message: "", preferredStyle: .alert)
-
-
-    @objc func alertControllerBackgroundTapped()
-    {
-        self.dismiss(animated: true, completion: nil)
-    }
-        
-    @IBAction func showNextQuestion(_ sender: UIButton) {
-//        print("from showNextQuestion func, user choice is: " + usrChoice)
-//        print("correct answer is: " + correctAnswer[currentQuestionIndex])
-//        print(usrChoice == correctAnswer[currentQuestionIndex])
+    
+    
+    @IBAction func checkForEmpty(_ sender: UIButton) {
         if usrChoice == correctAnswer[currentQuestionIndex] {
             MCQScore += 1
             Resources.resources.mcqScore = MCQScore
@@ -61,21 +54,48 @@ class MCQController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
                 self.correctAlert.view.superview?.isUserInteractionEnabled = true
                 self.correctAlert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
             })
-
             print("Score is: ", MCQScore)
         }
         else {
-            
+            nextBtn.isEnabled = false
             wrongAlert.setValue(wrongAlertContent, forKey: "attributedTitle")
             self.present(wrongAlert, animated: true, completion: {
                 self.wrongAlert.view.superview?.isUserInteractionEnabled = true
                 self.wrongAlert.view.superview?
                     .addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
             })
-
         }
-        currentQuestionIndex += 1
+        
+        if currentQuestionIndex >= (questions.count - 1) {
+            print("in checkForEmpty if: ", currentQuestionIndex)
 
+            nextBtn.isEnabled = false
+            nextBtn.alpha = 0.3
+            
+            submitBtn.isEnabled = false
+            submitBtn.alpha = 0.3
+        }
+        else {
+            print("in checkForEmpty else: ", currentQuestionIndex)
+            nextBtn.isEnabled = true
+            nextBtn.alpha = 1
+
+            submitBtn.isEnabled = false
+            submitBtn.alpha = 0.3
+        }
+        
+    }
+
+    @objc func alertControllerBackgroundTapped()
+    {
+        self.dismiss(animated: true, completion: nil)
+    }
+        
+    @IBAction func showNextQuestion(_ sender: UIButton) {
+//        print("from showNextQuestion func, user choice is: " + usrChoice)
+//        print("correct answer is: " + correctAnswer[currentQuestionIndex])
+//        print(usrChoice == correctAnswer[currentQuestionIndex])
+        currentQuestionIndex += 1
 
         if currentQuestionIndex != questions.count {
             // need to find a way to prevent index from going out of bound
@@ -83,11 +103,19 @@ class MCQController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
             questionLabel.text = question
             answers.reloadAllComponents()
             answers.selectRow(0, inComponent: 0, animated: true)
+            
+            nextBtn.isEnabled = false
+            nextBtn.alpha = 0.3
+            submitBtn.isEnabled = true
+            submitBtn.alpha = 1
         }
         else if currentQuestionIndex == questions.count{
             nextBtn.isEnabled = false
             nextBtn.alpha = 0.3
+            submitBtn.isEnabled = false
+            submitBtn.alpha = 0.3
         }
+
     }
     
 
@@ -100,8 +128,11 @@ class MCQController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         
         questionLabel.text = questions[currentQuestionIndex]
         answers.selectRow(0, inComponent: 0, animated: true)
-
+        
+        nextBtn.isEnabled = false
+        nextBtn.alpha = 0.3
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -130,15 +161,6 @@ class MCQController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         usrChoice = pickerDataSet1[currentQuestionIndex][row]
         print(usrChoice)
     }
-    
-//    @IBAction func done(_ sender: UIButton) {
-//        performSegue(withIdentifier: "MCQTotalScore", sender: self)
-//    }
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let finalScoreBoard = segue.destination as! scoreViewController
-//        finalScoreBoard.usrScore = self.MCQScore
-//    }
 
 }
 
