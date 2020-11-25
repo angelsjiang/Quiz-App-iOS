@@ -23,7 +23,7 @@ class MCQController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         "In The Little Mermaid Disney cartoon, how many sisters does Ariel have?"
     ]
     
-    let pickerDataSet1: [[String]] = [["8", "13", "25", "50"], ["2", "4", "6", "8"], ["2", "4", "5", "6"]]
+    let pickerDataSet1: [[String]] = [["8", "13", "25"], ["2", "4", "6"], ["4", "5", "6"]]
     let correctAnswer: [String] = ["13", "4", "6"]
     
     var usrChoice = String()
