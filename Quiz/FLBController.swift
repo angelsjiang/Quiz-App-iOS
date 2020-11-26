@@ -55,6 +55,7 @@ class FLBController: UIViewController {
             })
         }
         else {
+            Resources.resources.wrongAns += 1
             wrongAlert.setValue(wrongAlertContent, forKey: "attributedTitle")
             self.present(wrongAlert, animated: true, completion: {
                 self.wrongAlert.view.superview?.isUserInteractionEnabled = true

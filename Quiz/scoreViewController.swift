@@ -27,9 +27,7 @@ class scoreViewController: UIViewController {
         }
         
         correctAnswer = Resources.resources.correctAns
-        print("correct answer: ", correctAnswer)
-        wrongAnswer = Resources.resources.totalNumQs - Resources.resources.correctAns
-        print("wrong answer: ", wrongAnswer)
+        wrongAnswer = Resources.resources.wrongAns
         if correctAnswer > wrongAnswer {
             // green bg
             self.view.backgroundColor = .green

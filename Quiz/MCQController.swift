@@ -57,6 +57,8 @@ class MCQController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
             print("Score is: ", MCQScore)
         }
         else {
+            
+            Resources.resources.wrongAns += 1
             nextBtn.isEnabled = false
             wrongAlert.setValue(wrongAlertContent, forKey: "attributedTitle")
             self.present(wrongAlert, animated: true, completion: {

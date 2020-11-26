@@ -11,8 +11,8 @@ class Resources {
     
     static var resources = Resources()
     
-    var totalNumQs = 6
     var correctAns = 0
+    var wrongAns = 0
     
     var mcqScore: Int = 0
     var flbScore: Int = 0
