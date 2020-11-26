@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FLBController: UIViewController {
+class FLBController: UIViewController, UITextFieldDelegate {
     
     // FLB
     @IBOutlet var FLBQuestionLabel: UILabel!
@@ -38,6 +38,22 @@ class FLBController: UIViewController {
         NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20),
         NSAttributedString.Key.foregroundColor : UIColor.red])
     let wrongAlert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+    
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        
+        let existingTextHasDecimalSeparator = textField.text?.range(of: ".")
+        let replacementTextHasDecimalSeparator = string.range(of: ".")
+        
+        if existingTextHasDecimalSeparator != nil,
+           replacementTextHasDecimalSeparator != nil {
+            return false
+            
+        } else {
+            return true
+        }
+    }
     
     
     @IBAction func checkForEmpty(_ sender: UIButton) {
